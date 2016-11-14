@@ -1,2 +1,2 @@
 # LinkedList
-Linked list attempt in C, Yuu are to use the interfaces provided in it.
+Linked list attempt made by me in C, you are to use the interfaces provided in it.
