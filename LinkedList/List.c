@@ -11,8 +11,8 @@ void list_init(List * list, void(*destroy)(void *data))
 
 	list->size = 0;
 	list->destroy = destroy;
-	list->head = ((void *)0);
-	list->tail = ((void *)0);
+	list->head = NULL;
+	list->tail = NULL;
 	return;
 }
 
@@ -24,7 +24,7 @@ void list_destroy(List * list)
 
 	while (list_size(list) > 0)
 	{
-		if (list_remaining_next(list, NULL, (void **)&data) == 0 && list->destroy != ((void *)0))
+		if (list_remaining_next(list, NULL, (void **)&data) == 0 && list->destroy != NULL)
 		{
 			list->destroy(data);
 		}
@@ -42,7 +42,7 @@ int list_insert_next(List * list, ListElement * element, const void * data)
 
 	//Allocate storage like a kind fellow you are.
 
-	if ((new_element = (ListElement *)malloc(sizeof(ListElement))) == ((void *)0))  // i know I should just use NULL, but I like showing off.
+	if ((new_element = (ListElement *)malloc(sizeof(ListElement))) = NULL)  // i know I should just use NULL, but I like showing off.
 	{
 		return -1;
 	}
@@ -51,7 +51,7 @@ int list_insert_next(List * list, ListElement * element, const void * data)
 
 	new_element->data = (void *)data;
 
-	if (element == ((void *)0) )
+	if (element == NULL )
 	{
 		if (list_size(list) == 0)
 		{
@@ -63,7 +63,7 @@ int list_insert_next(List * list, ListElement * element, const void * data)
 	else
 	{
 		//insert it anywhere else other than head.
-		if (element->next == ((void *)0))
+		if (element->next == NULL)
 		{
 			list->tail = new_element;
 		}
@@ -86,7 +86,7 @@ int list_remaining_next(List * list, ListElement * element, void ** data)
 		return -1;
 	}
 
-	if (element == ((void *)0))
+	if (element == NULL)
 	{
 		//handles removal from head of the list
 		*data = list->head->data;
